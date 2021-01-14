@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="cancel" prefHeight="379.0" prefWidth="618.0" style="" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Text fill="#0cd0daf5" fontSmoothingType="LCD" layoutX="189.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="245.80419921875">
+         <font>
+            <Font name="System Bold" size="42.0" />
+         </font>
+      </Text>
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="141.0" prefHeight="21.0" prefWidth="104.0" text="Username" textAlignment="CENTER" />
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="195.0" prefHeight="21.0" prefWidth="104.0" text="Password" textAlignment="CENTER" />
+      <TextField id="username" fx:id="username" layoutX="219.0" layoutY="136.0" promptText="Username" />
+      <PasswordField fx:id="password" layoutX="219.0" layoutY="190.0" promptText="password" />
+      <CheckBox fx:id="loginRemember" layoutX="219.0" layoutY="241.0" mnemonicParsing="false" selected="true" text="Remenber me" />
+      <Button fx:id="login" layoutX="322.0" layoutY="291.0" mnemonicParsing="false" onAction="#checkAccount" prefHeight="31.0" prefWidth="84.0" text="login" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="212.0" AnchorPane.topAnchor="291.0" />
+      <Button layoutX="196.0" layoutY="291.0" mnemonicParsing="false" onAction="#cancelClose" prefHeight="31.0" prefWidth="84.0" text="Cancel" />
+<!--      <Button fx:id="signup" layoutX="435.0" layoutY="291.0" mnemonicParsing="false" onAction="#signUp" prefHeight="31.0" prefWidth="84.0" text="sign up" />-->
+   </children>
+</AnchorPane>
