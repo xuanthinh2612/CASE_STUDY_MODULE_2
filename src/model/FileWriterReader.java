@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileWriteReader {
+public class FileWriterReader {
 
     public static  List fileReader(String filePath){
         List<Object> list = new ArrayList<>();

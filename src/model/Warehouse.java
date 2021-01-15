@@ -3,8 +3,8 @@ package model;
 public abstract class Warehouse implements WarehouseManagement {
     private double importPrice;
     private double salePrice;
-    private int totalAmount;
-    private int amountOfSold;
+    private int total;
+    private int numberOfSold;
     private double likeLevel;
 
     public void setImportPrice(double importPrice) {
@@ -15,12 +15,12 @@ public abstract class Warehouse implements WarehouseManagement {
         this.salePrice = salePrice;
     }
 
-    public void setTotalAmount(int totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
-    public void setAmountOfSold(int amountOfSold) {
-        this.amountOfSold = amountOfSold;
+    public void setNumberOfSold(int numberOfSold) {
+        this.numberOfSold = numberOfSold;
     }
 
     public void setLikeLevel(double likeLevel) {
@@ -35,12 +35,12 @@ public abstract class Warehouse implements WarehouseManagement {
         return salePrice;
     }
 
-    public int getTotalAmount() {
-        return totalAmount;
+    public int getTotal() {
+        return total;
     }
 
-    public int getAmountOfSold() {
-        return amountOfSold;
+    public int getNumberOfSold() {
+        return numberOfSold;
     }
 
     public double getLikeLevel() {
@@ -50,12 +50,12 @@ public abstract class Warehouse implements WarehouseManagement {
 
     @Override
     public int checkInventory() {
-        return (this.totalAmount - this.amountOfSold);
+        return (this.total - this.numberOfSold);
     }
 
     @Override
     public double totalSoldMoney() {
-        double sold = this.amountOfSold*this.salePrice;
+        double sold = this.numberOfSold *this.salePrice;
         return sold;
     }
 
@@ -70,8 +70,8 @@ public abstract class Warehouse implements WarehouseManagement {
         return "Warehouse{" +
                 "importPrice=" + importPrice +
                 ", salePrice=" + salePrice +
-                ", totalAmount=" + totalAmount +
-                ", amountOfSold=" + amountOfSold +
+                ", totalAmount=" + total +
+                ", amountOfSold=" + numberOfSold +
                 ", likeLevel=" + likeLevel +
                 '}';
     }

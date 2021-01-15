@@ -2,10 +2,22 @@ package model;
 
 public class Tablet {
     private double displayScreenSize;
+    private int battery;
     private String connectAbility;
 
     public Tablet() {
     }
+
+    public int getBattery() {
+        return battery;
+    }
+
+    public void setBattery(int battery) {
+        this.battery = battery;
+    }
+
+
+
 
     public double getDisplayScreenSize() {
         return displayScreenSize;

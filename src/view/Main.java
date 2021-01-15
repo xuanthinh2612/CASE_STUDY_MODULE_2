@@ -1,33 +1,23 @@
 package view;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import java.util.Scanner;
 
-import java.io.IOException;
-
-public class Main extends Application {
+public class Main {
     public static void main(String[] args) {
-        launch(args);
+         Scanner scanner = new Scanner(System.in);
+        showMenu();
+        System.out.println("");
+
+
+
     }
+    public static void  showMenu() {
+        System.out.println("Menu");
+        System.out.println("1. Add new product");
+        System.out.println("2. Delete product");
+        System.out.println("3. Edit");
+        System.out.println("4. Show all");
+        System.out.println("0. Exit");
 
-    @Override
-    public void start(Stage primaryStage) {
-        try {
-
-            Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-            primaryStage.setTitle("Đăng nhập ");
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
-
-
 }

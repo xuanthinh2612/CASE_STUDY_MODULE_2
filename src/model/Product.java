@@ -48,6 +48,30 @@ public  class Product extends Warehouse implements Serializable {
         return this;
     }
 
+    public String getProductId() {
+        return productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public String getMaker() {
+        return maker;
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public String getDetailInfo() {
+        return detailInfo;
+    }
+
     @Override
     public String toString() {
         return super.toString()+"\n"+
