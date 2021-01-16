@@ -4,7 +4,7 @@ import model.account.Account;
 import model.account.Admin;
 import model.account.Customers;
 
-public class LoginAccountController {
+public class LoginAccountChecker {
     public static int checkAccount(String usernameIn, String passwordIn, Account account){
 
         if (usernameIn.equals(account.getId()) && passwordIn.equals(account.getPassword())&&(account instanceof Admin)) {

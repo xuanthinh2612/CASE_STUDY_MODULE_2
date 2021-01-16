@@ -6,6 +6,11 @@ public class Refrigerator extends Product{
     public Refrigerator() {
     }
 
+    public Refrigerator(String productId, String productName, String maker, String colour, String detailInfo, double volume) {
+        super(productId, productName, maker, colour, detailInfo);
+        this.volume = volume;
+    }
+
     public double getVolume() {
         return volume;
     }

@@ -1,89 +1,39 @@
 package controller;
 
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import model.account.Account;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 
 public class LoginController {
-    private final String LOGIN_DATA = "/model/userData.dat";
-    @FXML
-    private TextField username, password;
-
-    @FXML
-    public void login(ActionEvent event) {
+    static public int login(String usernameIn, String passwordIn) {
 
         int adminAcc = 1;
         int customerAcc = -1;
-        int notAUserAcc = 0;
-        String usernameIn = username.getText();
-        String passwordIn = password.getText();
+        int notFound = 0;
         List<Account> list;
         list = (new AccountManager()).readAccountData();
 
-        int checker = 0;
+        int accountChecker = 0;
         if (usernameIn.equals("") | passwordIn.equals("")) {
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Lỗi đăng nhập");
-            alert.setHeaderText("Thông báo");
-            alert.setContentText("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu");
-            alert.show();
-            return;
+            System.out.println("username or password can not be empty");
+            return 0;
         }
         for (Account account : list) {
-            checker = LoginAccountController.checkAccount(usernameIn, passwordIn, account);
-            if (checker == adminAcc || checker == customerAcc) {
+            accountChecker = LoginAccountChecker.checkAccount(usernameIn, passwordIn, account);
+            if (accountChecker == adminAcc || accountChecker == customerAcc) {
                 break;
             }
         }
-        if (checker == adminAcc) {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Parent root = null;
-            try {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("productManagement.fxml")));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        } else if (checker == customerAcc) {
-            // Scene for customer
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("khach hang");
-            alert.setHeaderText("Thông báo");
-            alert.setContentText("ban la khach hang");
-            alert.show();
-
-
-        } else if (checker == notAUserAcc) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Lỗi đăng nhập");
-            alert.setHeaderText("Thông báo");
-            alert.setContentText("Tài khoản hoặc mật khẩu nhập vào không đúng");
-            alert.show();
+        if (accountChecker == adminAcc || accountChecker == customerAcc) {
+            return accountChecker;
+        } else {
+            System.out.println("your username or password is incorrect");
+            return notFound;
         }
 
 
-    }
-
-    public void cancelClose(ActionEvent event) {
-        Platform.exit();
     }
 
 }

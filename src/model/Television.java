@@ -8,6 +8,13 @@ public class Television extends Product {
     public Television() {
     }
 
+    public Television(String productId, String productName, String maker, String colour, String detailInfo, double displayScreenSize, String displayTech, String systemOS) {
+        super(productId, productName, maker, colour, detailInfo);
+        this.displayScreenSize = displayScreenSize;
+        this.displayTech = displayTech;
+        this.systemOS = systemOS;
+    }
+
     public double getDisplayScreenSize() {
         return displayScreenSize;
     }

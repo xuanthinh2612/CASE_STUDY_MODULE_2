@@ -1,9 +1,11 @@
 package model;
 
-public abstract class Warehouse implements WarehouseManagement {
+import java.io.Serializable;
+
+public abstract class Warehouse implements WarehouseManagement, Serializable {
     private double importPrice;
     private double salePrice;
-    private int total;
+    private int totalNumber;
     private int numberOfSold;
     private double likeLevel;
 
@@ -15,8 +17,8 @@ public abstract class Warehouse implements WarehouseManagement {
         this.salePrice = salePrice;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setTotalNumber(int totalNumber) {
+        this.totalNumber = totalNumber;
     }
 
     public void setNumberOfSold(int numberOfSold) {
@@ -35,8 +37,8 @@ public abstract class Warehouse implements WarehouseManagement {
         return salePrice;
     }
 
-    public int getTotal() {
-        return total;
+    public int getTotalNumber() {
+        return totalNumber;
     }
 
     public int getNumberOfSold() {
@@ -50,7 +52,7 @@ public abstract class Warehouse implements WarehouseManagement {
 
     @Override
     public int checkInventory() {
-        return (this.total - this.numberOfSold);
+        return (this.totalNumber - this.numberOfSold);
     }
 
     @Override
@@ -59,8 +61,10 @@ public abstract class Warehouse implements WarehouseManagement {
         return sold;
     }
 
+
     @Override
     public double checkInterest() {
+
         return (this.totalSoldMoney()-this.checkInventory()*this.importPrice);
 
     }
@@ -70,7 +74,7 @@ public abstract class Warehouse implements WarehouseManagement {
         return "Warehouse{" +
                 "importPrice=" + importPrice +
                 ", salePrice=" + salePrice +
-                ", totalAmount=" + total +
+                ", totalAmount=" + totalNumber +
                 ", amountOfSold=" + numberOfSold +
                 ", likeLevel=" + likeLevel +
                 '}';

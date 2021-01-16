@@ -1,11 +1,18 @@
 package model;
 
-public class Tablet {
+public class Tablet extends Product{
     private double displayScreenSize;
     private int battery;
     private String connectAbility;
 
     public Tablet() {
+    }
+
+    public Tablet(String productId, String productName, String maker, String colour, String detailInfo, double displayScreenSize, int battery, String connectAbility) {
+        super(productId, productName, maker, colour, detailInfo);
+        this.displayScreenSize = displayScreenSize;
+        this.battery = battery;
+        this.connectAbility = connectAbility;
     }
 
     public int getBattery() {

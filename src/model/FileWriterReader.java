@@ -7,7 +7,7 @@ import java.util.List;
 public class FileWriterReader {
 
     public static  List fileReader(String filePath){
-        List<Object> list = new ArrayList<>();
+        List<Object> list = null;
         try {
             FileInputStream fileInputStream = new FileInputStream(filePath);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -20,6 +20,9 @@ public class FileWriterReader {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }
+        if (list==null){
+            list= new ArrayList<>();
         }
         return list;
     }

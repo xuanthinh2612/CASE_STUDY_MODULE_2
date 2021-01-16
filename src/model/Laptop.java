@@ -9,6 +9,14 @@ public class Laptop extends Product     {
     public Laptop() {
     }
 
+    public Laptop(String productId, String productName, String maker, String colour, String detailInfo, int ram, String chipset, double displayScreenSize, String systemOS) {
+        super(productId, productName, maker, colour, detailInfo);
+        this.ram = ram;
+        this.chipset = chipset;
+        this.displayScreenSize = displayScreenSize;
+        this.systemOS = systemOS;
+    }
+
     public int getRam() {
         return ram;
     }

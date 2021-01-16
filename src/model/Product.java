@@ -2,14 +2,20 @@ package model;
 
 import java.io.Serializable;
 
-public  class Product extends Warehouse implements Serializable {
+public class Product extends Warehouse implements Serializable, Comparable {
     private String productId;
     private String productName;
-    private String productImage;
     private String maker;
     private String colour;
     private String detailInfo;
 
+    public Product(String productId, String productName, String maker, String colour, String detailInfo) {
+        this.productId = productId;
+        this.productName = productName;
+        this.maker = maker;
+        this.colour = colour;
+        this.detailInfo = detailInfo;
+    }
 
     public Product() {
     }
@@ -24,10 +30,6 @@ public  class Product extends Warehouse implements Serializable {
         return this;
     }
 
-    public Product withProductImage(String image) {
-        this.productImage = image;
-        return this;
-    }
 
     public Product withProductMaker(String maker) {
         this.maker = maker;
@@ -56,9 +58,6 @@ public  class Product extends Warehouse implements Serializable {
         return productName;
     }
 
-    public String getProductImage() {
-        return productImage;
-    }
 
     public String getMaker() {
         return maker;
@@ -72,16 +71,28 @@ public  class Product extends Warehouse implements Serializable {
         return detailInfo;
     }
 
+
     @Override
     public String toString() {
-        return super.toString()+"\n"+
+        return super.toString() + "\n" +
                 "Product{" +
                 "productId='" + productId + '\'' +
                 ", productName='" + productName + '\'' +
-                ", productImage='" + productImage + '\'' +
                 ", maker='" + maker + '\'' +
                 ", colour='" + colour + '\'' +
                 ", detailInfo='" + detailInfo + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Product p = (Product) o;
+        if (p.getNumberOfSold() > this.getNumberOfSold()) {
+            return 1;
+        } else if (p.getNumberOfSold() < this.getNumberOfSold()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }

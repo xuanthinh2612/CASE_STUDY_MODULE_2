@@ -8,6 +8,13 @@ public class MobilePhone extends Product{
     public MobilePhone() {
     }
 
+    public MobilePhone(String productId, String productName, String maker, String colour, String detailInfo, double displayScreenSize, int battery, String connectAbility) {
+        super(productId, productName, maker, colour, detailInfo);
+        this.displayScreenSize = displayScreenSize;
+        this.battery = battery;
+        this.connectAbility = connectAbility;
+    }
+
     public double getDisplayScreenSize() {
         return displayScreenSize;
     }

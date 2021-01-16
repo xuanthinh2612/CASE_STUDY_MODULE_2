@@ -6,9 +6,13 @@ public class Customers extends Account {
     private String address;
     private String email;
 
-    public Customers() {
+    public Customers(String id, String password, String name, int age, String address, String email) {
+        super(id, password);
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.email = email;
     }
-
 
     public String getName() {
         return name;
@@ -40,6 +44,9 @@ public class Customers extends Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public void buyProduct(String productID, int Number,double voteStar){
+
     }
 
     @Override

@@ -6,31 +6,39 @@ import model.Product;
 import java.util.List;
 
 public class ProductManager {
-    private final String DATA_FILE_PATH = "src/model/Storage/data.dat";
-    List<Product> productList = FileWriterReader.fileReader(DATA_FILE_PATH);
+    private static final String DATA_FILE_PATH = "src/model/Storage/data.dat";
+     List<Product> productList = FileWriterReader.fileReader(DATA_FILE_PATH);
+     int success = 1;
+     int fail = -1;
 
     public int addNewProduct(Product product) {
-
+        if (productList.isEmpty()){
+            productList.add(product);
+            return success;
+        }
         for (Product p : productList) {
             if (p.getProductId().equals(product.getProductId())) {
-                return -1;
+
+                return fail;
             }
         }
         productList.add(product);
         FileWriterReader.fileWriter(productList, DATA_FILE_PATH);
-        return 1;
+        return success;
     }
 
-    public void editProduct(Product product, String productID) {
+    public int editProduct(Product product) {
 
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getProductId().equals(productID)) {
+
+            if (productList.get(i).getProductId().equals(product.getProductId())) {
                 productList.set(i, product);
-                break;
+                FileWriterReader.fileWriter(productList, DATA_FILE_PATH);
+                return success;
             }
         }
-        FileWriterReader.fileWriter(productList, DATA_FILE_PATH);
 
+            return fail;
     }
 
     public List<Product> showAllProduct() {
@@ -38,11 +46,15 @@ public class ProductManager {
 
     }
 
-    public void deleteProduct(String productID) {
+    public int deleteProduct(String productID) {
         for (Product p : productList){
             if (p.getProductId().equals(productID)){
                 productList.remove(p);
+                FileWriterReader.fileWriter(productList, DATA_FILE_PATH);
+                return success;
             }
         }
+        return fail;
     }
+
 }

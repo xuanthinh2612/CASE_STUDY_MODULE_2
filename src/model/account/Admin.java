@@ -11,6 +11,15 @@ public class Admin extends Account {
     public Admin() {
     }
 
+    public Admin(String id, String password, String name, int age, String address, String email, String staffID) {
+        super(id, password);
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.email = email;
+        this.staffID = staffID;
+    }
+
     public String getName() {
         return name;
     }
@@ -50,6 +59,7 @@ public class Admin extends Account {
     public void setStaffID(String staffID) {
         this.staffID = staffID;
     }
+
 
 
     @Override
