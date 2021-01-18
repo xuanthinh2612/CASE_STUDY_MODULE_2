@@ -1,5 +1,6 @@
 package controller;
 
+import model.FileWriterReader;
 import model.Product;
 
 import java.util.List;
@@ -17,19 +18,32 @@ public class CustomerController {
                 }
             }
         }
+
         public void showAllProductName(){
             for (Product product: productList){
                 if (product.checkInventory()>0){
-                    System.out.println("Name: "+ product.getProductName()+" ID: "+ product.getProductId());
+                    System.out.println("Name: "+ product.getProductName()+" ID: "+ product.getProductId()+ " remain "+product.checkInventory()+" vote "+product.getLikeLevel());
                 }
             }
+
+//            for (Product product : productList){
+//                product.setLikeLevel(0);
+//                productManager.editProduct(product);
+//
+//            }
 
         }
         public void vote(String productID, int vote){
             for (Product product:productList){
                 if (product.getProductId().equals(productID)){
                     int buyTimes = product.getBuyTimes();
-                    double like = (((product.getLikeLevel()*(buyTimes))+vote)/buyTimes);
+                    double like;
+                    if (buyTimes==0){
+                         like = vote;
+                    } else {
+                         like = (((product.getLikeLevel()*(buyTimes))+vote)/(buyTimes+1));
+
+                    }
                     product.setBuyTimes(buyTimes+1);
                     product.setLikeLevel(like);
                     productManager.editProduct(product);
