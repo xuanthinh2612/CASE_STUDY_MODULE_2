@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class Product extends Warehouse implements Serializable, Comparable {
+public class Product extends Warehouse implements Serializable {
     private String productId;
     private String productName;
     private String maker;
@@ -84,15 +84,4 @@ public class Product extends Warehouse implements Serializable, Comparable {
                 '}';
     }
 
-    @Override
-    public int compareTo(Object o) {
-        Product p = (Product) o;
-        if (p.getNumberOfSold() > this.getNumberOfSold()) {
-            return 1;
-        } else if (p.getNumberOfSold() < this.getNumberOfSold()) {
-            return -1;
-        } else {
-            return 0;
-        }
-    }
 }

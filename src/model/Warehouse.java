@@ -6,8 +6,17 @@ public abstract class Warehouse implements WarehouseManagement, Serializable {
     private double importPrice;
     private double salePrice;
     private int totalNumber;
-    private int numberOfSold;
-    private double likeLevel;
+    private int numberOfSold = 0;
+    private double likeLevel = 0;
+    private int buyTimes = 0;
+
+    public int getBuyTimes() {
+        return buyTimes;
+    }
+
+    public void setBuyTimes(int buyTimes) {
+        this.buyTimes = buyTimes;
+    }
 
     public void setImportPrice(double importPrice) {
         this.importPrice = importPrice;
@@ -65,7 +74,7 @@ public abstract class Warehouse implements WarehouseManagement, Serializable {
     @Override
     public double checkInterest() {
 
-        return (this.totalSoldMoney()-this.checkInventory()*this.importPrice);
+        return (this.totalSoldMoney()-(this.checkInventory()*this.importPrice));
 
     }
 
@@ -77,6 +86,7 @@ public abstract class Warehouse implements WarehouseManagement, Serializable {
                 ", totalAmount=" + totalNumber +
                 ", amountOfSold=" + numberOfSold +
                 ", likeLevel=" + likeLevel +
+                ", buyTimes=" + buyTimes+
                 '}';
     }
 }

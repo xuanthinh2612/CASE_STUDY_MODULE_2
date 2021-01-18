@@ -1,9 +1,6 @@
 package view;
 
-import controller.AccountManager;
-import controller.AdminController;
-import controller.LoginController;
-import controller.ProductManager;
+import controller.*;
 import model.*;
 import model.account.Account;
 import model.account.Admin;
@@ -17,7 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
         menu();
-        int choice = Integer.parseInt(scanner.nextLine());
+
+        int choice = scanner.nextInt();
         while (true) {
             switch (choice) {
                 case 1:
@@ -27,7 +25,8 @@ public class Main {
                         adminRole();
 
                     } else if (loginNumber == -1) {
-                        System.out.println("you are customer");
+                        System.out.println("Welcome to our store");
+                        customerRole();
                     }
                     break;
                 case 2:
@@ -83,12 +82,19 @@ public class Main {
 
     public static void showMenuForCustomer() {
         System.out.println("Menu");
-        System.out.println("1. Buy");
-        System.out.println("2. Vote");
-        System.out.println("3. Edit");
-        System.out.println("4. Show all");
-        System.out.println("5. logout");
+        System.out.println("1. Show all product");
+        System.out.println("2. Buy");
+        System.out.println("3. logout");
         System.out.println("0. Exit");
+
+    }
+
+    public static int login() {
+        System.out.print("Enter your username: ");
+        String username = scanner.next();
+        System.out.print("Enter your password: ");
+        String password = scanner.next();
+        return LoginController.login(username, password);
 
     }
 
@@ -132,38 +138,6 @@ public class Main {
         Account admin = new Admin(username, password, name, age, address, mail, staffID);
         return admin;
     }
-
-    public static int login() {
-        System.out.print("Enter your username: ");
-        String username = scanner.next();
-        System.out.print("Enter your password: ");
-        String password = scanner.next();
-        return LoginController.login(username, password);
-
-    }
-
-//    public static void productManager() {
-//        showMenuForAdmin();
-//        int choice = scanner.nextInt();
-//        while (true) {
-//            switch (choice) {
-//                case 1:
-//                    break;
-//                case 2:
-//                    break;
-//                case 3:
-//                    break;
-//                case 4:
-//                    break;
-//                case 5:
-//                    break;
-//                case 0:
-//                    return;
-//            }
-//
-//        }
-//
-//    }
 
     public static Product addPhone() {
         System.out.println("Product ID");
@@ -412,7 +386,7 @@ public class Main {
         Product product = null;
         showMenuForAdmin();
 
-         scanner.nextInt();
+        scanner.nextInt();
         int choice = scanner.nextInt();
         while (true) {
             switch (choice) {
@@ -479,6 +453,44 @@ public class Main {
             choice = scanner.nextInt();
 
         }
+    }
+
+    public static void customerRole() {
+        CustomerController customerController = new CustomerController();
+        showMenuForCustomer();
+
+        int choice = scanner.nextInt();
+
+        while (true) {
+            switch (choice) {
+                case 1:
+                    customerController.showAllProductName();
+                    break;
+                case 2:
+                    System.out.println("Enter product ID ");
+                    scanner.nextLine();
+                    String productID = scanner.nextLine();
+
+                    System.out.println("Enter number that you want to buy ");
+                    int number = scanner.nextInt();
+
+                    customerController.buyProduct(productID, number);
+
+                    System.out.println("Do you like us? (1-5) ");
+                    int vote = scanner.nextInt();
+
+                    customerController.vote(productID, vote);
+                    break;
+                case 3:
+                    return;
+                case 0:
+                    System.exit(0);
+            }
+            showMenuForCustomer();
+            choice = scanner.nextInt();
+
+        }
+
     }
 
 }

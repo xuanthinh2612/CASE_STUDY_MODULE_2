@@ -9,6 +9,8 @@ public class FileWriterReader {
     public static  List fileReader(String filePath){
         List<Object> list = null;
         try {
+
+
             FileInputStream fileInputStream = new FileInputStream(filePath);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             list = (ArrayList)objectInputStream.readObject();
@@ -32,6 +34,7 @@ public class FileWriterReader {
             FileOutputStream fileOutputStream = new FileOutputStream(path);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(list);
+
             objectOutputStream.close();
             fileOutputStream.close();
 

@@ -8,12 +8,14 @@ import java.util.List;
 public class ProductManager {
     private static final String DATA_FILE_PATH = "src/model/Storage/data.dat";
      List<Product> productList = FileWriterReader.fileReader(DATA_FILE_PATH);
+
      int success = 1;
      int fail = -1;
 
     public int addNewProduct(Product product) {
         if (productList.isEmpty()){
             productList.add(product);
+            FileWriterReader.fileWriter(productList, DATA_FILE_PATH);
             return success;
         }
         for (Product p : productList) {
@@ -41,7 +43,7 @@ public class ProductManager {
             return fail;
     }
 
-    public List<Product> showAllProduct() {
+    public List<Product> getAllProductList() {
         return productList;
 
     }

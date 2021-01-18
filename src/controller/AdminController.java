@@ -5,6 +5,8 @@ import model.account.Account;
 import model.account.Admin;
 import model.account.Customers;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class AdminController {
@@ -40,21 +42,21 @@ public class AdminController {
 
 
     public void showAllProduct() {
-        List<Product> list = productManager.showAllProduct();
+        List<Product> list = productManager.getAllProductList();
         for (Product p : list) {
             System.out.println(p);
         }
     }
 
     public void showAllProductName() {
-        List<Product> list = productManager.showAllProduct();
+        List<Product> list = productManager.getAllProductList();
         for (Product p : list) {
             System.out.println(p.getProductName());
         }
     }
 
     public void findProductByID(String productID) {
-        List<Product> list = productManager.showAllProduct();
+        List<Product> list = productManager.getAllProductList();
         for (Product p : list) {
             if (p.getProductId().equals(productID))
                 System.out.println(p);
@@ -64,11 +66,23 @@ public class AdminController {
     }
 
     public void sortBySoldNumber() {
-        List<Product> list = productManager.showAllProduct();
-        list.sort(Product::compareTo);
-        for (Product product : list) {
-            System.out.println(list);
-        }
+        List<Product> list = productManager.getAllProductList();
+        Collections.sort(list, new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                if (o1.getNumberOfSold() > o2.getNumberOfSold()) {
+                    return 1;
+                } else if (o1.getNumberOfSold() < o2.getNumberOfSold()) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+
+            }
+        });
+
+        showAllProduct();
+
     }
 //    public void sortByInventoryNumber(){
 //        List<Product> list = productManager.showAllProduct();
@@ -80,7 +94,7 @@ public class AdminController {
 
 
     public void showInventory() {
-        List<Product> productList = productManager.showAllProduct();
+        List<Product> productList = productManager.getAllProductList();
         for (Product product : productList) {
             if (product.checkInventory()>0){
                 System.out.println("ID: "+product.getProductId()+" name: "+product.getProductName()+" remain:  " + product.checkInventory());
@@ -89,7 +103,7 @@ public class AdminController {
     }
 
     public void showInterest() {
-        List<Product> productList = productManager.showAllProduct();
+        List<Product> productList = productManager.getAllProductList();
 
         for (Product product : productList) {
             if (product.checkInventory()>0){
@@ -99,7 +113,7 @@ public class AdminController {
     }
 
     public void showTotalSoldMoney() {
-        List<Product> productList = productManager.showAllProduct();
+        List<Product> productList = productManager.getAllProductList();
 
         for (Product product : productList) {
 
