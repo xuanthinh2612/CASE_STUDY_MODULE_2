@@ -2,10 +2,10 @@ package model;
 
 import java.io.Serializable;
 
-public abstract class Warehouse implements WarehouseManagement, Serializable {
-    private double importPrice;
-    private double salePrice;
-    private int totalNumber;
+public  class Warehouse implements Serializable  {
+    private double importPrice = 0;
+    private double salePrice = 0;
+    private int totalNumber = 0;
     private int numberOfSold = 0;
     private double likeLevel = 0;
     private int buyTimes = 0;
@@ -59,34 +59,5 @@ public abstract class Warehouse implements WarehouseManagement, Serializable {
     }
 
 
-    @Override
-    public int checkInventory() {
-        return (this.totalNumber - this.numberOfSold);
-    }
 
-    @Override
-    public double totalSoldMoney() {
-        double sold = this.numberOfSold *this.salePrice;
-        return sold;
-    }
-
-
-    @Override
-    public double checkInterest() {
-
-        return (this.totalSoldMoney()-(this.checkInventory()*this.importPrice));
-
-    }
-
-    @Override
-    public String toString() {
-        return "Warehouse{" +
-                "importPrice=" + importPrice +
-                ", salePrice=" + salePrice +
-                ", totalAmount=" + totalNumber +
-                ", amountOfSold=" + numberOfSold +
-                ", likeLevel=" + likeLevel +
-                ", buyTimes=" + buyTimes+
-                '}';
-    }
 }

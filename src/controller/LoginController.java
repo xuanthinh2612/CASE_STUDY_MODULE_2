@@ -12,8 +12,7 @@ public class LoginController {
         int adminAcc = 1;
         int customerAcc = -1;
         int notFound = 0;
-        List<Account> list;
-        list = (new AccountManager()).readAccountData();
+        List<Account> list = (new AccountManager()).readAccountData();
 
         int accountChecker = 0;
         if (usernameIn.equals("") | passwordIn.equals("")) {

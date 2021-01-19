@@ -1,6 +1,5 @@
 package controller;
 
-import model.FileWriterReader;
 import model.account.Account;
 
 import java.util.ArrayList;

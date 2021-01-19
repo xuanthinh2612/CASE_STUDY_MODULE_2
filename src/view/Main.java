@@ -166,9 +166,11 @@ public class Main {
         int totalNumber = scanner.nextInt();
 
         Product mobilePhone = new MobilePhone(productID, productName, maker, colour, detailInfo, displayScreenSize, battery, connectAbility);
-        mobilePhone.setTotalNumber(totalNumber);
-        mobilePhone.setSalePrice(salePrice);
-        mobilePhone.setImportPrice(importPrice);
+        Warehouse warehouse = new Warehouse();
+        warehouse.setTotalNumber(totalNumber);
+        warehouse.setSalePrice(salePrice);
+        warehouse.setImportPrice(importPrice);
+        mobilePhone.setWarehouse(warehouse);
         return mobilePhone;
 
     }
@@ -200,10 +202,12 @@ public class Main {
         int totalNumber = scanner.nextInt();
 
         Product tablet = new Tablet(productID, productName, maker, colour, detailInfo, displayScreenSize, battery, connectAbility);
-        tablet.setTotalNumber(totalNumber);
-        tablet.setSalePrice(salePrice);
-        tablet.setImportPrice(importPrice);
+        Warehouse warehouse = new Warehouse();
+        warehouse.setTotalNumber(totalNumber);
+        warehouse.setSalePrice(salePrice);
+        warehouse.setImportPrice(importPrice);
 
+        tablet.setWarehouse(warehouse);
         return tablet;
     }
 
@@ -238,11 +242,14 @@ public class Main {
         int totalNumber = scanner.nextInt();
 
         Product latop = new Laptop(productID, productName, maker, colour, detailInfo, ram, chipset, displayScreenSize, systemOS);
-        latop.setTotalNumber(totalNumber);
-        latop.setSalePrice(salePrice);
-        latop.setImportPrice(importPrice);
+        Warehouse warehouse = new Warehouse();
 
-        ProductManager manager = new ProductManager();
+        warehouse.setTotalNumber(totalNumber);
+        warehouse.setSalePrice(salePrice);
+        warehouse.setImportPrice(importPrice);
+
+        latop.setWarehouse(warehouse);
+
         return latop;
     }
 
@@ -274,9 +281,13 @@ public class Main {
         System.out.println("Total number: ");
         int totalNumber = scanner.nextInt();
         Product television = new Television(productID, productName, maker, colour, detailInfo, displayScreenSize, displayTech, systemOS);
-        television.setTotalNumber(totalNumber);
-        television.setSalePrice(salePrice);
-        television.setImportPrice(importPrice);
+        Warehouse warehouse = new Warehouse();
+
+        warehouse.setTotalNumber(totalNumber);
+        warehouse.setSalePrice(salePrice);
+        warehouse.setImportPrice(importPrice);
+
+        television.setWarehouse(warehouse);
 
         return television;
     }
@@ -303,9 +314,13 @@ public class Main {
         System.out.println("Total number: ");
         int totalNumber = scanner.nextInt();
         Product refrigerator = new Refrigerator(productID, productName, maker, colour, detailInfo, volume);
-        refrigerator.setTotalNumber(totalNumber);
-        refrigerator.setSalePrice(salePrice);
-        refrigerator.setImportPrice(importPrice);
+        Warehouse warehouse = new Warehouse();
+
+        warehouse.setTotalNumber(totalNumber);
+        warehouse.setSalePrice(salePrice);
+        warehouse.setImportPrice(importPrice);
+
+        refrigerator.setWarehouse(warehouse);
 
         return refrigerator;
     }
@@ -337,9 +352,13 @@ public class Main {
 
 
         Product washingMachine = new WashingMachine(productID, productName, maker, colour, detailInfo, volume, rpm);
-        washingMachine.setTotalNumber(totalNumber);
-        washingMachine.setSalePrice(salePrice);
-        washingMachine.setImportPrice(importPrice);
+        Warehouse warehouse = new Warehouse();
+
+        warehouse.setTotalNumber(totalNumber);
+        warehouse.setSalePrice(salePrice);
+        warehouse.setImportPrice(importPrice);
+
+        washingMachine.setWarehouse(warehouse);
 
         return washingMachine;
     }
@@ -386,7 +405,7 @@ public class Main {
         Product product = null;
         showMenuForAdmin();
 
-        scanner.nextInt();
+//        scanner.nextInt();
         int choice = scanner.nextInt();
         while (true) {
             switch (choice) {

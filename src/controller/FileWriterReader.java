@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,14 +6,14 @@ import java.util.List;
 
 public class FileWriterReader {
 
-    public static  List fileReader(String filePath){
+    public static List fileReader(String filePath) {
         List<Object> list = null;
         try {
 
 
             FileInputStream fileInputStream = new FileInputStream(filePath);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            list = (ArrayList)objectInputStream.readObject();
+            list = (ArrayList) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
         } catch (FileNotFoundException e) {
@@ -23,13 +23,13 @@ public class FileWriterReader {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        if (list==null){
-            list= new ArrayList<>();
+        if (list == null) {
+            list = new ArrayList<>();
         }
         return list;
     }
 
-    public static void fileWriter(List list,String path){
+    public static void fileWriter(List list, String path) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(path);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);

@@ -42,7 +42,7 @@ public class MobilePhone extends Product{
     @Override
     public String toString() {
 
-        return super.toString()+"\n"+ "MobiPhone{" +
+        return super.toString()+ "MobiPhone{" +
                 "displayScreen=" + displayScreenSize +
                 ", battery=" + battery +
                 ", connectAbility='" + connectAbility + '\'' +

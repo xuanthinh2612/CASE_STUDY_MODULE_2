@@ -2,12 +2,13 @@ package model;
 
 import java.io.Serializable;
 
-public class Product extends Warehouse implements Serializable {
+public class Product  implements Serializable, WarehouseManagement {
     private String productId;
     private String productName;
     private String maker;
     private String colour;
     private String detailInfo;
+    private Warehouse warehouse;
 
     public Product(String productId, String productName, String maker, String colour, String detailInfo) {
         this.productId = productId;
@@ -71,10 +72,45 @@ public class Product extends Warehouse implements Serializable {
         return detailInfo;
     }
 
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    @Override
+    public int checkInventory() {
+        return (this.warehouse.getTotalNumber() - this.warehouse.getNumberOfSold());
+    }
+
+    @Override
+    public double totalSoldMoney() {
+        double sold = this.warehouse.getNumberOfSold() *this.warehouse.getSalePrice();
+        return sold;
+    }
+
+
+    @Override
+    public double checkInterest() {
+
+        return (this.totalSoldMoney()-(this.checkInventory()*this.warehouse.getImportPrice()));
+
+    }
+
+
 
     @Override
     public String toString() {
-        return super.toString() + "\n" +
+        return  "Warehouse{" +
+                "importPrice=" + warehouse.getImportPrice() +
+                ", salePrice=" + warehouse.getSalePrice() +
+                ", totalAmount=" + warehouse.getTotalNumber() +
+                ", amountOfSold=" + warehouse.getNumberOfSold() +
+                ", likeLevel=" + warehouse.getLikeLevel() +
+                ", buyTimes=" + warehouse.getBuyTimes()+
+                '}' +
                 "Product{" +
                 "productId='" + productId + '\'' +
                 ", productName='" + productName + '\'' +
@@ -85,3 +121,4 @@ public class Product extends Warehouse implements Serializable {
     }
 
 }
+

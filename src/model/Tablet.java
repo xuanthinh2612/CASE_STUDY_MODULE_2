@@ -44,7 +44,7 @@ public class Tablet extends Product{
 
     @Override
     public String toString() {
-        return super.toString() + "\n" + "Tablet{" +
+        return super.toString()  + "Tablet{" +
                 "displayScreenSize=" + displayScreenSize +
                 ", connectAbility='" + connectAbility + '\'' +
                 '}';

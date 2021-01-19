@@ -70,9 +70,9 @@ public class AdminController {
         Collections.sort(list, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
-                if (o1.getNumberOfSold() > o2.getNumberOfSold()) {
+                if (o1.getWarehouse().getNumberOfSold() > o2.getWarehouse().getNumberOfSold()) {
                     return 1;
-                } else if (o1.getNumberOfSold() < o2.getNumberOfSold()) {
+                } else if (o1.getWarehouse().getNumberOfSold() < o2.getWarehouse().getNumberOfSold()) {
                     return -1;
                 } else {
                     return 0;
@@ -117,7 +117,7 @@ public class AdminController {
 
         for (Product product : productList) {
 
-                System.out.println("ID: "+ product.getProductId()+" name: "+product.getProductName()+" sold number: "+product.getNumberOfSold()+" total money:  " + product.totalSoldMoney());
+                System.out.println("ID: "+ product.getProductId()+" name: "+product.getProductName()+" sold number: "+product.getWarehouse().getNumberOfSold()+" total money:  " + product.totalSoldMoney());
             }
         }
 
